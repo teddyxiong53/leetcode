@@ -14,6 +14,8 @@ js
 
 文件名统一都叫Solution.x。x表示对应的后缀。
 
+主要还是用C语言做，其他的主要看思路有什么不一样的。
+
 
 
 ```
@@ -29,7 +31,23 @@ js
 04 Media of two sorted array。
 	这个重点是考虑全面。看官方分析里的公司挺头疼的。
 	值得反复学习。
-	
+	先暂时跳过吧。
+05 Longest Palindromic Substring
+	找出最长的回文字符串。
+	马拉车算法，这个重点是分析，算法实现反而不是重点。
+06 zigzag
+	这个是把一个字字符串按Z字形排列。没有什么意思。不看。
+07 Reverse Integer
+	翻转一个给定的整数。
+08 String to Integer
+	自己实现atoi函数。
+09 Palindromic Number
+	回文数。回文数，特点就是reverse之后，值和reverse之前相等。
+	可以复用07的函数。
+10 Regular Expression Matching
+	实现简单的正则匹配。只匹配*和. 。
+	跳过。
+
 ```
 
 
