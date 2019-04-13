@@ -5,13 +5,13 @@ all:
 	@echo "make c/cpp/java/py/js"
 c:
 	@echo "==============compile============="
-	gcc -g Solution.c
+	gcc Solution.c
 	@echo "==============run============="
 	./a.out
 
 cpp:
 	@echo "==============compile============="
-	g++ -std=c++11 Solution.cpp
+	g++ -std=c++14 Solution.cpp
 	@echo "==============run============="
 	./a.out
 

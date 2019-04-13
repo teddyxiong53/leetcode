@@ -47,7 +47,20 @@ js
 10 Regular Expression Matching
 	实现简单的正则匹配。只匹配*和. 。
 	跳过。
-
+11.ContainerWithMostWater
+	这个暴力法很容易写。一次循环的也实现了。
+12.IntegerToRoman
+	这个是整数转罗马数字。
+13.RomanToInteger
+	是上一题的逆向。不做了。
+	还是做一下，还是不一样的。还是差不多，查表法可以解决。
+14.LongestCommonPrefix
+	最长的相同前缀。
+15.3Sum
+	给定一个数组，求三个数之和为0的组合。
+	这个用C语言来做，还真是不方便。
+	用c++吧。
+	
 ```
 
 

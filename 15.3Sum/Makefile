@@ -11,7 +11,7 @@ c:
 
 cpp:
 	@echo "==============compile============="
-	g++ -std=c++11 Solution.cpp
+	g++ -g -std=c++11 Solution.cpp
 	@echo "==============run============="
 	./a.out
 
