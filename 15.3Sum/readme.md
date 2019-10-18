@@ -85,6 +85,27 @@ int main()
 
 
 
+这个的符合规定的解法是怎样的呢？
+
+discuss区里找到一个python解法。
+
+关键点有这些：
+
+```
+1、先对nums进行排序。排序这个很关键。
+2、然后固定一个值，一个从前面取，一个从后面取，如果大于0，则后面那个往前一步。如果小于0，则前面那个往后一步。等于0，则把当前的添加到结果里。
+```
+
+另外，使用set也可以，最后再list(result)来转一下就好了。
+
+用这种算法后，速度很快，不到一秒就完成了。
+
+从提交结果看，这个算法也只是比18%的python解决方法快。只是内存占用比较少。
+
+使用c++的话，耗时只有88ms，比起1s的python，要快进10倍。
+
+
+
 # C语言
 
 NA
@@ -93,7 +114,55 @@ NA
 
 # C++
 
-NA
+注意这个的去掉重复项的方法。
+
+```
+#include <string>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        vector<vector<int>> res;
+        for (int i=0; i<n; i++) {
+            int target = -nums[i];
+            int l = i+1;
+            int r = n-1;
+            while(l < r) {
+                int sum = nums[l] + nums[r];
+                if(sum > target) {
+                    r--;
+                } else if(sum < target) {
+                    l++;
+                } else {
+                    res.push_back({nums[l], nums[i], nums[r]});
+                    l++;
+                    r--;
+                    while(l < r && nums[l] == res.back()[1]) {
+                        l++;
+                    }
+                    while(l < r&& nums[r] == res.back()[2]) {
+                        r--;
+                    }
+                }
+            }
+            while(i+1 < n && nums[i] == nums[i+1]) {
+                i++;
+            }
+        }
+        return res;
+    }
+};
+```
+
+
 
 
 
@@ -105,7 +174,70 @@ NA
 
 # python
 
-NA
+最直观的写法。
+
+```
+class Solution:
+    def threeSum(self, nums):
+        sz = len(nums)
+        result = list()
+        for i in range(0, sz):
+            for j in range(i+1, sz):
+                for k in range(j+1, sz):
+                    if nums[i] + nums[j] + nums[k] == 0:
+                        tmp = [nums[i], nums[j], nums[k]]
+                        result.append(tmp)
+        return result
+```
+
+当前这样是有问题的。
+
+```
+
+[[-1,0,1],[-1,2,-1],[0,1,-1]]
+```
+
+有重复项。
+
+怎么去掉这种重复项呢？
+
+对里面的内容进行排序就好了。
+
+```
+tmp.sort()
+```
+
+现在还是超时。对应的用例长度是3000个数字。
+
+我在本地运行一下，统计运行时间。
+
+```
+class Solution:
+    def threeSum(self, nums):
+        nums.sort()
+        result = set()
+        sz = len(nums)
+        for i in range(0, sz):
+            l = i + 1
+            r = sz -1
+            target = 0 - nums[i]
+            while l < r:
+                if nums[l] + nums[r] == target:
+                    result.add((nums[i], nums[l], nums[r]))
+                    l += 1
+                    r -= 1
+                elif nums[l] + nums[r] < target:
+                    l+=1
+                else:
+                    r -= 1
+        return list(result)
+```
+
+
+
+
+
+
 
 # js
 
