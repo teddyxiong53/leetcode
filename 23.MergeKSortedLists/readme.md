@@ -66,31 +66,49 @@ class Solution(object):
 
 可以用分治法，分治法就是两两合并。
 
+```
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        dummy = ListNode(-1)
+        p = dummy
+        while l1 or l2:
+            if l1 and l2 and l1.val <= l2.val:
+                p.next = l1
+                l1 = l1.next
+            elif l1 and l2 and l1.val > l2.val:
+                p.next = l2
+                l2 = l2.next
+            elif l1:
+                p.next = l1
+                l1 = l1.next
+            elif l2:
+                p.next = l2
+                l2 = l2.next
+            p = p.next
+
+        return dummy.next
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        n = len(lists)
+        if n == 0:
+            return None
+        while n > 1:
+            k = (n+1)/2
+            i = 0
+            while i < n/2:
+                lists[i] = self.mergeTwoLists(lists[i], lists[i+k])
+                i += 1
+            n = k
+        return lists[0]
+```
 
 
-# C语言
-
-NA
-
-
-
-# C++
-
-NA
-
-
-
-# java
-
-NA
-
-
-
-# python
-
-NA
-
-# js
-
-NA
 

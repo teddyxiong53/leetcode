@@ -33,35 +33,24 @@ class Solution(object):
 
 还有递归的解法。
 
-但是测试是时间超限了。
+```
+class Solution(object):
+    def swapPairs(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next:
+            return head
+        t = head.next
+        head.next = self.swapPairs(head.next.next)
+        t.next = head
+        return t
+```
 
 
 
 
 
-# C语言
 
-NA
-
-
-
-# C++
-
-NA
-
-
-
-# java
-
-NA
-
-
-
-# python
-
-NA
-
-# js
-
-NA
 
